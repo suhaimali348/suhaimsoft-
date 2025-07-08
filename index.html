@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<title>Ably Real-time Demo</title>
+<script src='https://cdn.ably.io/lib/ably.min-1.js'></script>
+</head>
+<body>
+<h1>Ably Real-time Message Viewer</h1>
+<pre id='msgBox' style='background:#eee; padding:10px; height:150px; overflow-y:auto;'></pre>
+
+<script>
+  const ably = new Ably.Realtime('X5Tp-g.KazqMw:4P1Auzf48H0HEPaLBDDpjU4IBTtGMgSOdGMOIDkwFzE');
+  const channel = ably.channels.get('get-started');
+
+  channel.subscribe('first', message => {
+    console.log('Browser received:', message.data);
+    const msgBox = document.getElementById('msgBox');
+    msgBox.textContent += message.data + '\\n';
+  });
+</script>
+</body>
+</html>
