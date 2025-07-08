@@ -1,1 +1,9 @@
-﻿
+
+<script src='https://cdn.ably.io/lib/ably.min-1.js'></script>
+<script>
+  const ably = new Ably.Realtime('YOUR_ABLY_API_KEY');
+  const channel = ably.channels.get('get-started');
+  channel.subscribe('first', message => {
+    console.log('Received:', message.data);
+  });
+</script>
