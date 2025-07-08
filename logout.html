@@ -12,3 +12,14 @@
   });
 </script>
 <pre id='msgBox' style='background:#eee; padding:10px; height:150px; overflow-y:auto;'></pre>
+<script src='https://cdn.ably.io/lib/ably.min-1.js'></script>
+<script>
+  const ably = new Ably.Realtime('X5Tp-g.KazqMw:4P1Auzf48H0HEPaLBDDpjU4IBTtGMgSOdGMOIDkwFzE');
+  const channel = ably.channels.get('get-started');
+
+  channel.subscribe('update', message => {
+    console.log('Real-time update:', message.data);
+    // Here you update your page dynamically, e.g.:
+    // document.getElementById('yourElementId').textContent = message.data;
+  });
+</script>
